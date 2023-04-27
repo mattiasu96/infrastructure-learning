@@ -23,6 +23,25 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
+
+      # Useful to install Poetry in CI: https://medium.com/@vanflymen/blazing-fast-ci-with-github-actions-poetry-black-and-pytest-9e74299dd4a5
+    - name: Install Poetry
+      uses: dschep/install-poetry-action@v1.2
+
+    - name: Cache Poetry virtualenv
+      uses: actions/cache@v1
+      id: cache
+      with:
+        path: ~/.venv
+        key: poetry-${{ hashFiles('**/poetry.lock') }}
+        restore-keys: |
+          poetry-${{ hashFiles('**/poetry.lock') }}
+
+    - name: Set Poetry config
+      run: |
+        poetry config settings.virtualenvs.in-project false
+        poetry config settings.virtualenvs.path ~/.venv
+
     - name: Install dependencies
       run: |
           make install
