@@ -1,2 +1,2 @@
 # infrastructure-learning
-This is my personal repo to test and mess around with CI/CD, github actions, docker, kubernetes, Rest APIs, makefiles and so on
+This is my personal repo to test and mess around with CI/CD, github actions, docker, kubernetes, Rest APIs, makefiles and so on. The idea is to build a fully end-to-end application (even a dummy one) with all the best practices of DevOps, CI/CD, Software engineering ecc...
