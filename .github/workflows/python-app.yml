@@ -26,7 +26,10 @@ jobs:
 
       # Useful to install Poetry in CI: https://medium.com/@vanflymen/blazing-fast-ci-with-github-actions-poetry-black-and-pytest-9e74299dd4a5
     - name: Install Poetry
-      uses: dschep/install-poetry-action@v1.2
+      run: |
+        curl -sSL https://install.python-poetry.org | python3 -
+      shell: bash
+      if: steps.poetry-cache.outputs.cache-hit != 'true'
 
     - name: Cache Poetry virtualenv
       uses: actions/cache@v1
