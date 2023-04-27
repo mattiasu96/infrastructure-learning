@@ -14,15 +14,19 @@ format:
 	poetry run isort $(CHECK_DIRS)
 
 .PHONY: lint
-format:
+lint:
 	poetry run pylint -j 0 $(CHECK_DIRS)
 
 .PHONY: type-check
-format:
+type-check:
 	poetry mypy $(CHECK_DIRS)
 
 .PHONY: test
-format:
+test:
 	poetry run pytest $(TEST_DIR)
+
+.PHONY: check
+check: format lint type-check test ## Launch all the checks (formatting, linting, type checking)
+
 
 
