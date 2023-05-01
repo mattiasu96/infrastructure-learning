@@ -19,7 +19,7 @@ lint:
 
 .PHONY: type-check
 type-check:
-	poetry mypy $(CHECK_DIRS)
+	poetry run mypy $(CHECK_DIRS)
 
 .PHONY: test
 test:
