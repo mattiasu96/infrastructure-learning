@@ -1,4 +1,8 @@
+import json
+
 from fastapi import FastAPI
+
+from src.jobs import BaseJob
 
 app = FastAPI()
 
@@ -12,9 +16,17 @@ def read_root():
     return {"msg": "Hello World"}
 
 
-# @app.get("/jobs/{job}")
-# def read_item(job: BaseJob):
-#     return {"job_name": job.name, "salary": job.salary, "swag": job.swag}
+@app.get("/jobs/{job_id}")
+def read_item(job_id: str) -> BaseJob:
+    """
+    Endpoint to retrieve the job infos from the ID
+    :param job_id: unique job ID
+    :return: The job data structure
+    """
+    with open("./database.json", "r", encoding="UTF-8") as jobs_file:
+        jobs = json.load(jobs_file)
+    return jobs[job_id]
+
 
 # @app.post("")
 # def post_job(item_id: int, q: Union[str, None] = None):
