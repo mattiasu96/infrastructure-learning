@@ -15,7 +15,7 @@ format:
 
 .PHONY: lint
 lint:
-	poetry run pylint -j 0 $(CHECK_DIRS)
+	poetry run pylint -j 0 --disable=missing-module-docstring $(CHECK_DIRS)
 
 .PHONY: type-check
 type-check:

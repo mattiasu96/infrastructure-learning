@@ -1,14 +1,16 @@
-from typing import Union
-
 from fastapi import FastAPI
-from src.jobs import BaseJob
 
 app = FastAPI()
 
 
 @app.get("/")
 def read_root():
-    return {"msg":"Hello World"}
+    """
+    Root entry point of the app.
+    :return:
+    """
+    return {"msg": "Hello World"}
+
 
 # @app.get("/jobs/{job}")
 # def read_item(job: BaseJob):
