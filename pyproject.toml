@@ -6,7 +6,7 @@ description = ""
 authors = ["mattiasu96"]
 
 [tool.poetry.dependencies]
-python = "^3.10.1"
+python = "^3.10"
 fastapi = "^0.95.1"
 pylint = "^2.17.3"
 black = "^23.3.0"

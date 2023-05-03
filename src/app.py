@@ -1,4 +1,5 @@
 import json
+from pathlib import Path
 
 from fastapi import FastAPI
 
@@ -23,7 +24,9 @@ def read_item(job_id: str) -> BaseJob:
     :param job_id: unique job ID
     :return: The job data structure
     """
-    with open("./database.json", "r", encoding="UTF-8") as jobs_file:
+    with open(
+        Path(__file__).parent / "database.json", "r", encoding="UTF-8"
+    ) as jobs_file:
         jobs = json.load(jobs_file)
     return jobs[job_id]
 
