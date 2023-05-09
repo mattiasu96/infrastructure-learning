@@ -14,7 +14,7 @@ def read_root():
     Root entry point of the app.
     :return:
     """
-    return {"msg": "Hello World"}
+    return {"msg": "Welcome to the meme job posting"}
 
 
 @app.get("/jobs/{job_id}")
