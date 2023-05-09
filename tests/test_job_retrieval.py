@@ -1,7 +1,7 @@
 from fastapi.testclient import TestClient
 
 from src.app import app
-from src.jobs import BaseJob
+
 client = TestClient(app)
 
 
@@ -18,6 +18,7 @@ def test_get_job():
         "salary": 1500,
         "swag": 9999,
     }
+
 
 def test_post_job():
     """
