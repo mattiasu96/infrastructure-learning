@@ -25,12 +25,27 @@ def read_item(job_id: str) -> BaseJob:
     :return: The job data structure
     """
     with open(
-        Path(__file__).parent / "database.json", "r", encoding="UTF-8"
+            Path(__file__).parent / "database.json", "r", encoding="UTF-8"
     ) as jobs_file:
         jobs = json.load(jobs_file)
     return jobs[job_id]
 
 
-# @app.post("")
-# def post_job(item_id: int, q: Union[str, None] = None):
-#     return {"item_id": item_id, "q": q}
+@app.post("/jobs/")
+def post_job(job: BaseJob):
+    with open(
+            Path(__file__).parent / "database.json", "r", encoding="UTF-8"
+    ) as jobs_file:
+        jobs = json.load(jobs_file)
+
+    max_id = int(max(jobs.keys()))
+    new_id = max_id + 1
+
+    jobs[new_id] = job.dict()
+
+    with open(
+            Path(__file__).parent / "database.json", "w", encoding="UTF-8"
+    ) as jobs_file:
+        json.dump(jobs, jobs_file)
+
+    return job
