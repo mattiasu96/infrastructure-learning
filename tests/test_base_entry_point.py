@@ -12,4 +12,4 @@ def test_base_entry_point():
     """
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == {"msg": "Hello World"}
+    assert response.json() == {"msg": "Welcome to the meme job posting"}
