@@ -6,7 +6,7 @@ PYTEST_FLAGS = -vv tests
 .PHONY: install
 install:
 	poetry run pip install --upgrade pip
-	poetry install
+	poetry install -v
 
 .PHONY: format
 format:
