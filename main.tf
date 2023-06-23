@@ -30,7 +30,7 @@ resource "aws_instance" "app_server" {
 }
 
 resource "aws_s3_bucket" "my_bucket" {
-  bucket = "mattia_surricchio_bucket_test"
+  bucket = "mattia-surricchio-bucket-test"
   tags = {
     Name        = "My bucket"
     Environment = "Dev"
