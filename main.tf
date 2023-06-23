@@ -21,7 +21,8 @@ provider "aws" {
 }
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-830c94e3"
+  ami           = "ami-022e1a32d3f742bd8"
+  region        = "us-east-1"
   instance_type = "t2.micro"
 
   tags = {
@@ -31,9 +32,10 @@ resource "aws_instance" "app_server" {
 
 resource "aws_s3_bucket" "my_bucket" {
   bucket = "my-tf-test-bucket"
-
+  region = "us-east-1"
   tags = {
     Name        = "My bucket"
     Environment = "Dev"
   }
+
 }
