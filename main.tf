@@ -30,10 +30,19 @@ resource "aws_instance" "app_server" {
 }
 
 resource "aws_s3_bucket" "my_bucket" {
-  bucket = "mattia-surricchio-bucket-test"
+  bucket = "mattia-surricchio-bucket-test" # NB: the name has to be unique across all AWS!
   tags = {
     Name        = "My bucket"
     Environment = "Dev"
   }
 
+}
+
+resource "aws_ecr_repository" "aws_ecr" {
+  name                 = "my_web_app"
+  image_tag_mutability = "MUTABLE"
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
 }
